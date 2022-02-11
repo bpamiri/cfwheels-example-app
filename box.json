@@ -1,6 +1,6 @@
 {
     "name":"CFWheels Template Example App",
-    "version":"0.1.9",
+    "version":"0.1.10",
     "author":"Tom King",
     "shortDescription":"A CFWheels 2.x example app with user management, role based permissions and password resets",
     "location":"ForgeboxStorage",
@@ -43,6 +43,6 @@
         "patch-release":"bump --patch && publish",
         "minor-release":"bump --minor && publish",
         "major-release":"bump --major && publish",
-        "postInstallAll":"rm base/box.json --force && cp config/ base/config/ --recurse && cp controllers/ base/controllers/ --recurse && cp events/ base/events/ --recurse && cp global/ base/global/ --recurse && cp javascript/ base/javascript/ --recurse && cp migrator/ base/migrator/ --recurse && cp models/ base/models/ --recurse && cp plugins/ base/plugins/ --recurse && cp stylesheets/ base/stylesheets/ --recurse && cp tests/ base/tests/ --recurse && cp views/ base/views/ --recurse && cp base/ ./ --recurse && rm base/ --recurse --force"
+        "postInstallAll":"rm base/box.json --force && cp config/ base/config/ --recurse && cp controllers/ base/controllers/ --recurse && cp events/ base/events/ --recurse && cp global/ base/global/ --recurse && cp javascript/ base/javascript/ --recurse && cp migrator/ base/migrator/ --recurse && cp models/ base/models/ --recurse && cp plugins/ base/plugins/ --recurse && cp stylesheets/ base/stylesheets/ --recurse && cp tests/ base/tests/ --recurse && cp views/ base/views/ --recurse && cp base/ ./ --recurse && rm base/ --recurse --force && install cfwheels-flashmessages-bootstrap@^1.0.2 && install cfwheels-authenticateThis@^1.0.1 && install cfwheels-js-confirm@^1.05"
     }
 }
