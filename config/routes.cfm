@@ -5,6 +5,7 @@
 	// See http://docs.cfwheels.org/docs/routing for more info.
 
 	mapper()
+	// CLI-Appends-Here
 	//=====================================================================
 	//= 	Authentication Routes
 	//=====================================================================
