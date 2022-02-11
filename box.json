@@ -38,8 +38,8 @@
         "cfwheels-js-confirm":"^1.0.5"
     },
     "installPaths":{
-        "cfwheels-core":"wheels/",
         "cfwheels-base":"base/",
+        "cfwheels-core":"wheels/",
         "cfwheels-flashmessages-bootstrap":"base/plugins/FlashMessagesBootstrap",
         "cfwheels-authenticateThis":"base/plugins/authenticateThis",
         "cfwheels-js-confirm":"base/plugins/jsconfirm"
