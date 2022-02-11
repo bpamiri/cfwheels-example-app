@@ -8,7 +8,7 @@
 	*/
 
 	// Added via CFWheels CLI
-	this.name = "exampleApp";
+	this.name = "|appName|";
 
 	// buffer the output of a tag/function body to output in case of a exception
 	// Currently setting this to true as otherwise you can't do dump then abort in a controller for debugging in
