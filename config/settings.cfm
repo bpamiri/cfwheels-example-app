@@ -16,10 +16,10 @@
 
 	// Reload your application with ?reload=true&password=changeme
 	// Obviously, change this.
-	set(reloadPassword="changeme");
+	set(reloadPassword="|reloadPassword|");
 
 	// Your Apps datasource name
-	set(dataSourceName="exampleApp");
+	set(dataSourceName="|datasourceName|");
 
 	// Turn on new flashAppend Behaviour
 	set(flashAppend = true);
