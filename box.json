@@ -43,6 +43,20 @@
         "patch-release":"bump --patch && publish",
         "minor-release":"bump --minor && publish",
         "major-release":"bump --major && publish",
-        "postInstallAll":"rm base/box.json --force && cp ./ base/ --recurse && cp base/ ./ --recurse && rm base/ --recurse --force"
+        "postInstallAll":"
+			rm base/box.json --force &&
+			cp config/ base/ --recurse &&
+			cp controllers/ base/ --recurse &&
+			cp events/ base/ --recurse &&
+			cp global/ base/ --recurse &&
+			cp javascript/ base/ --recurse &&
+			cp migrator/ base/ --recurse &&
+			cp models/ base/ --recurse &&
+			cp plugins/ base/ --recurse &&
+			cp stylesheets/ base/ --recurse &&
+			cp tests/ base/ --recurse &&
+			cp views/ base/ --recurse &&
+			cp base/ ./ --recurse &&
+			rm base/ --recurse --force"
     }
 }
