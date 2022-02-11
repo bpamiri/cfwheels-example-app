@@ -1,13 +1,13 @@
 {
     "name":"CFWheels Template Example App",
-    "version":"0.1.4",
+    "version":"0.1.5",
     "author":"Tom King",
     "shortDescription":"A CFWheels 2.x example app with user management, role based permissions and password resets",
     "location":"ForgeboxStorage",
     "slug":"cfwheels-template-example-app",
     "directory":"",
-    "createPackageDirectory":false,
-    "packageDirectory":"",
+    "createPackageDirectory":true,
+    "packageDirectory":"template",
     "homepage":"https://github.com/cfwheels/cfwheels-example-app/",
     "documentation":"https://github.com/cfwheels/cfwheels-example-app/wiki/",
     "repository":{
