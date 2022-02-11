@@ -1,8 +1,8 @@
 {
     "name":"CFWheels Template Example App",
-    "version":"0.1.0",
+    "version":"0.1.1",
     "author":"Tom King",
-    "location":"bpamiri/cfwheels-example-app",
+    "location":"cfwheels/cfwheels-example-app#v0.1.1",
     "directory":"",
     "createPackageDirectory":false,
     "packageDirectory":"",
@@ -32,17 +32,11 @@
     ],
     "dependencies":{
         "cfwheels-core":"^2.2",
-        "cfwheels-base":"^2.2",
-        "cfwheels-flashmessages-bootstrap":"^1.0.2",
-        "cfwheels-authenticateThis":"^1.0.1",
-        "cfwheels-js-confirm":"^1.0.5"
+        "cfwheels-base":"^2.2"
     },
     "installPaths":{
         "cfwheels-core":"wheels/",
-        "cfwheels-base":"base/",
-        "cfwheels-flashmessages-bootstrap":"plugins/FlashMessagesBootstrap",
-        "cfwheels-authenticateThis":"plugins/authenticateThis",
-        "cfwheels-js-confirm":"plugins/jsconfirm"
+        "cfwheels-base":"base/"
     },
     "scripts":{
         "postVersion":"package set location='cfwheels/cfwheels-example-app#v`package version`'",
