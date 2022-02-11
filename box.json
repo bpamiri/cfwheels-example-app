@@ -43,6 +43,6 @@
         "patch-release":"bump --patch && publish",
         "minor-release":"bump --minor && publish",
         "major-release":"bump --major && publish",
-        "postInstallAll":"rm base/box.json --force && cp base/ ./ --recurse && rm base/ --recurse --force"
+        "postInstallAll":"rm base/box.json --force && cp ./ base/ --recurse && cp base/ ./ --recurse && rm base/ --recurse --force"
     }
 }
