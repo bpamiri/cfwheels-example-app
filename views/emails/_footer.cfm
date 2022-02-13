@@ -41,7 +41,7 @@
                     <tbody><tr>
                       <td class="padded" style="padding: 0;vertical-align: top;padding-left: 10px;padding-right: 0;font-size: 12px;line-height: 20px;color: #999;font-family: sans-serif;text-align: right">
                         <div>This is an automated email<br />
-sent on behalf of <cfoutput>#getSetting("general_sitename")#</cfoutput></div>
+sent on behalf of <cfoutput><!---#getSetting("general_sitename")#---></cfoutput></div>
                         <div>
                           <span class="block">
 
