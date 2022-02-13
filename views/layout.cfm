@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <cfoutput>#csrfMetaTags()#</cfoutput>
-    <title>#e(getSetting('general_sitename'))#</title>
+<!---    <title>#e(getSetting('general_sitename'))#</title>--->
     <meta name="description" content="This is an example CFWheels Application">
 	  <!---
           CSS
