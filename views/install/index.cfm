@@ -11,7 +11,7 @@
 					<th scope="row">
 						<i class="fas fa-check-circle text-success"></i>
 					</th>
-					<td>The dataSourceName is defined as #get("dataSourceName")#</td>
+					<td>The dataSourceName is defined and is named `#get("dataSourceName")#`</td>
 				</tr>
 			<cfelse>
 				<tr>
