@@ -26,7 +26,7 @@
 	<!--[if lt IE 8]>
 			<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
-	
+
 	<div id="content" class="container">
 		<div class="pt-5">
 			#flashMessages()#
@@ -35,12 +35,7 @@
 			</section>
 		</div>
 	</div>
-	
-	<!---
-		Include Footer
-	--->
-	#includePartial("/layout/footer")#
-	
+
 	<!---
 		Javascript
 		Include jQuery and Bootstrap JS, moment js & daterangepicker from CDN
@@ -52,7 +47,7 @@
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 	#javascriptIncludeTag("custom")#
-	
+
 	<!---
 		Additional JS Set in view files
 		Sometimes for development it's a load easier to just have a cfsavecontent block of javascript in the same file as
@@ -66,8 +61,7 @@
 					</cfoutput>
 			</cfloop>
 	</cfif>
-	
+
 	</body>
 	</html>
 	</cfoutput>
-	
