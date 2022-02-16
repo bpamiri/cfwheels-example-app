@@ -3,28 +3,30 @@
 <table class="table">
   <tbody>
 		<cfoutput>
-			<cfset continueVerification = true >
+			<cfset continueChecks = true >
 
 			<!--- check datasource not blank --->
-			<cfif continueVerification and len(get("dataSourceName")) >
-				<tr>
-					<th scope="row">
-						<i class="fas fa-check-circle text-success"></i>
-					</th>
-					<td>The dataSourceName is defined and is named `#get("dataSourceName")#`</td>
-				</tr>
-			<cfelse>
-				<tr>
-					<th scope="row">
-						<i class="fas fa-times-circle text-danger"></i>
-					</th>
-					<td>The dataSourceName is not defined or is blank</td>
-				</tr>
-				<cfset continueVerification = false >
+			<cfif continueChecks >
+				<cfif len(get("dataSourceName")) >
+					<tr>
+						<th scope="row">
+							<i class="fas fa-check-circle text-success"></i>
+						</th>
+						<td>The dataSourceName is defined and is named `#get("dataSourceName")#`</td>
+					</tr>
+				<cfelse>
+					<tr>
+						<th scope="row">
+							<i class="fas fa-times-circle text-danger"></i>
+						</th>
+						<td>The dataSourceName is not defined or is blank</td>
+					</tr>
+					<cfset continueChecks = false >
+				</cfif>
 			</cfif>
 
 			<!--- check if we can communicate with the database --->
-			<cfif continueVerification >
+			<cfif continueChecks >
 				<cftry>
 					<cfquery name="appSettings" datasource="#get('dataSourceName')#">
 						select count(*) as count
@@ -34,36 +36,38 @@
 						<th scope="row">
 							<i class="fas fa-check-circle text-success"></i>
 						</th>
-						<td>We were able to select from the migratorversions table</td>
+						<td>We were able to select from the `migratorversions` table</td>
 					</tr>
 					<cfcatch type="any">
 						<tr>
 							<th scope="row">
 								<i class="fas fa-times-circle text-danger"></i>
 							</th>
-							<td>We were unable to select from the migratorversions table. Pleae insure that all migrations have been run.</td>
+							<td>We were unable to select from the `migratorversions` table. Pleae insure that the database has been created and all migrations have been run.</td>
 						</tr>
-						<cfset continueVerification = false >
+						<cfset continueChecks = false >
 					</cfcatch>
 				</cftry>
 			</cfif>
 
 			<!--- check that all migrations have been completed --->
-			<cfif continueVerification and isDefined("appSettings") and isQuery(appSettings) and appSettings.count eq 13>
-				<tr>
-					<th scope="row">
-						<i class="fas fa-check-circle text-success"></i>
-					</th>
-					<td>All migrations appear to have been run</td>
-				</tr>
-			<cfelse>
-				<tr>
-					<th scope="row">
-						<i class="fas fa-times-circle text-danger"></i>
-					</th>
-					<td>Looks like we are missing some migrations. Pleae insure that all migrations have been run.</td>
-				</tr>
-				<cfset continueVerification = false >
+			<cfif continueChecks >
+				<cfif isDefined("appSettings") and isQuery(appSettings) and appSettings.count eq 13>
+					<tr>
+						<th scope="row">
+							<i class="fas fa-check-circle text-success"></i>
+						</th>
+						<td>All migrations appear to have been run</td>
+					</tr>
+				<cfelse>
+					<tr>
+						<th scope="row">
+							<i class="fas fa-times-circle text-danger"></i>
+						</th>
+						<td>Looks like we are missing some migrations. Pleae insure that all migrations have been run.</td>
+					</tr>
+					<cfset continueChecks = false >
+				</cfif>
 			</cfif>
 
 		</cfoutput>
