@@ -26,14 +26,16 @@
 			</cfif>
 
 			<!--- check if the datasource is setup to use an H2 Database --->
+			<cfset driverIsH2 = false >
 			<cfif continueChecks >
 				<cftry>
 						<cfdbinfo type="version" name="db_info" datasource="#get('dataSourceName')#">
+						<cfif db_info.DATABASE_PRODUCTNAME eq "H2">
+							<cfset driverIsH2 = true >
+						</cfif>
 					<cfcatch type="any">
 						<cfif find("[org.h2.Driver]",cfcatch.message) >
 							<cfset driverIsH2 = true >
-						<cfelse>
-							<cfset driverIsH2 = false >
 						</cfif>
 					</cfcatch>
 				</cftry>
@@ -46,7 +48,7 @@
 						<th scope="row">
 							<i class="fas fa-check-circle text-success"></i>
 						</th>
-						<td>The H2 extension for Lucee seems to be installed and ready for use.</td>
+						<td>The H2 extension for Lucee seems to be installed and the datasource is setup to use H2.</td>
 					</tr>
 				<cfelse>
 					<tr>
@@ -70,7 +72,7 @@
 						<th scope="row">
 							<i class="fas fa-check-circle text-success"></i>
 						</th>
-						<td>We were able to select from the `migratorversions` table</td>
+						<td>We were able to select from the `migratorversions` table, so at least one migration has run.</td>
 					</tr>
 					<cfcatch type="any">
 						<tr>
@@ -107,3 +109,9 @@
 		</cfoutput>
   </tbody>
 </table>
+<cftry>
+	<cfset settings = model("setting") >
+	<cfcatch type="any">
+		<cfdump var="#cfcatch#">
+	</cfcatch>
+</cftry>
