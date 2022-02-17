@@ -25,21 +25,35 @@
 				</cfif>
 			</cfif>
 
-			<!--- check if H2 extension is installed --->
+			<!--- check if the datasource is setup to use an H2 Database --->
 			<cfif continueChecks >
+				<cftry>
+						<cfdbinfo type="version" name="db_info" datasource="#get('dataSourceName')#">
+					<cfcatch type="any">
+						<cfif find("[org.h2.Driver]",cfcatch.message) >
+							<cfset driverIsH2 = true >
+						<cfelse>
+							<cfset driverIsH2 = false >
+						</cfif>
+					</cfcatch>
+				</cftry>
+			</cfif>
+
+			<!--- check if H2 extension is installed --->
+			<cfif continueChecks and driverIsH2>
 				<cfif ExtensionExists( id="465E1E35-2425-4F4E-8B3FAB638BD7280A", version="1.3.172" ) >
 					<tr>
 						<th scope="row">
 							<i class="fas fa-check-circle text-success"></i>
 						</th>
-						<td>The H2 extension for Lucee seems to be installed.</td>
+						<td>The H2 extension for Lucee seems to be installed and ready for use.</td>
 					</tr>
 				<cfelse>
 					<tr>
 						<th scope="row">
 							<i class="fas fa-times-circle text-danger"></i>
 						</th>
-						<td>The H2 extension for Lucee is not installed. To install it, run `box install` in the root of your application.</td>
+						<td>It appears the datasource is setup for H2 but the H2 extension for Lucee is not installed. To install it, run `box install` in the root of your application.</td>
 					</tr>
 					<cfset continueChecks = false >
 				</cfif>
