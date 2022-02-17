@@ -19,7 +19,7 @@
 						<th scope="row">
 							<i class="fas fa-times-circle text-danger"></i>
 						</th>
-						<td>The dataSourceName is not defined or is blank</td>
+						<td>The dataSourceName is not defined or is blank. Please check to make sure you have setup a datasource. If you asked the wizard to setup a H2 dabase for you this would be defined in `config/settings.cfm`</td>
 					</tr>
 					<cfset continueChecks = false >
 				</cfif>
@@ -79,7 +79,7 @@
 							<th scope="row">
 								<i class="fas fa-times-circle text-danger"></i>
 							</th>
-							<td>We were unable to select from the `migratorversions` table. Pleae insure that the database has been created and all migrations have been run.</td>
+							<td>We were unable to select from the `migratorversions` table. Pleae insure that the database has been created and all migrations have been run. To run the migrations, run `box wheels dbmigrate latest` in the root of your application.</td>
 						</tr>
 						<cfset continueChecks = false >
 					</cfcatch>
@@ -100,7 +100,7 @@
 						<th scope="row">
 							<i class="fas fa-times-circle text-danger"></i>
 						</th>
-						<td>Looks like we are missing some migrations. Pleae insure that all migrations have been run.</td>
+						<td>Looks like we are missing some migrations. Pleae insure that all migrations have been run. To run the migrations, run `box wheels dbmigrate latest` in the root of your application.</td>
 					</tr>
 					<cfset continueChecks = false >
 				</cfif>
