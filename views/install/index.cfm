@@ -1,8 +1,8 @@
-<h1>Example App Install</h1>
+<cfoutput>
+	<h1>Example App Install</h1>
 
-<table class="table">
-  <tbody>
-		<cfoutput>
+	<table class="table">
+		<tbody>
 			<cfset continueChecks = true >
 
 			<!--- check datasource not blank --->
@@ -106,12 +106,49 @@
 				</cfif>
 			</cfif>
 
-		</cfoutput>
-  </tbody>
-</table>
-<cftry>
-	<cfset settings = model("setting") >
-	<cfcatch type="any">
-		<cfdump var="#cfcatch#">
-	</cfcatch>
-</cftry>
+			<!--- check if we can call a model method --->
+			<cfif continueChecks >
+				<cftry>
+					<cfset settings = model("setting").findAll() >
+					<tr>
+						<th scope="row">
+							<i class="fas fa-check-circle text-success"></i>
+						</th>
+						<td>We were able to call a model method `findAll()` on the `setting` model.</td>
+					</tr>
+					<cfcatch type="any">
+						<tr>
+							<th scope="row">
+								<i class="fas fa-times-circle text-danger"></i>
+							</th>
+							<td>We were unable to call a model method `findAll()` on the `setting` model. Try restarting your server to see if this issue resolves itself.</td>
+						</tr>
+						<cfset continueChecks = false >
+					</cfcatch>
+				</cftry>
+			</cfif>
+		</tbody>
+	</table>
+
+	<!--- All is good so reconfigure the main route --->
+	<cfif continueChecks >
+		<!--- Change the default route to load the app --->
+		<cfscript>
+			fileContent = fileRead(expandPath("config/routes.cfm"), "utf-8");
+			newContent = replace(fileContent, '"install', '"main');
+			fileObject = fileOpen("config/routes.cfm", "write", "utf-8");
+			fileWrite(fileObject, newContent , "utf-8");
+			fileClose(fileObject);
+		</cfscript>
+
+		<h2>Congradulations</h2>
+		<p>
+			All installation verification steps have completed and your installation has been reconfigured to load the applicaiton root.
+			This means that `install##index` has been changed to `main##index` in the `config/routes.cfm` file.
+			Click the reload button below to reload the framework and launch your application.
+		</p>
+
+		#linkTo(text="Reload", route="root", params="reload=yes&password=#get('reloadPassword')#", class="btn btn-primary")#
+	</cfif>
+
+</cfoutput>
