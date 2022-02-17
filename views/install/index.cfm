@@ -145,7 +145,8 @@
 		<p>
 			All installation verification steps have completed and your installation has been reconfigured to load the applicaiton root.
 			This means that `install##index` has been changed to `main##index` in the `config/routes.cfm` file.
-			Click the reload button below to reload the framework and launch your application.
+			Click the reload button below to reload the framework and launch your application. You may safely remove the `install` folder
+			from the `views` folder before moving into production.
 		</p>
 
 		#linkTo(text="Reload", route="root", params="reload=yes&password=#get('reloadPassword')#", class="btn btn-primary")#
