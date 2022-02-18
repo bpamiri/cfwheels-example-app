@@ -55,7 +55,12 @@
 						<th scope="row">
 							<i class="fas fa-times-circle text-danger"></i>
 						</th>
-						<td>It appears the datasource is setup for H2 but the H2 extension for Lucee is not installed. To install it, run `box install` in the root of your application.</td>
+						<td>
+							It appears the datasource is setup for H2 but the H2 extension for Lucee is
+							not installed. To install it, run `box install` in the root of your
+							application. It takes Lucee about a minute to recognize the new extension.
+							Reload this page to continue the install process.
+						</td>
 					</tr>
 					<cfset continueChecks = false >
 				</cfif>
@@ -127,24 +132,45 @@
 					</cfcatch>
 				</cftry>
 			</cfif>
-		</tbody>
-	</table>
+
+		<!--- Change the default route to load the app --->
+		<cfif continueChecks >
+			<cftry>
+				<cffile action="read" file="#expandPath("config/routes.cfm")#" variable="fileContent">
+				<cfset newContent = replace(fileContent, '"install', '"main')>
+				<cffile action="write" file="#expandPath("config/routes.cfm")#" output="#newContent#">
+				<tr>
+					<th scope="row">
+						<i class="fas fa-check-circle text-success"></i>
+					</th>
+					<td>
+						Your installation has been reconfigured to load the applicaiton root.	This
+						means that `install##index` has been changed to `main##index` in the
+						`config/routes.cfm` file.
+					</td>
+				</tr>
+				<cfcatch type="any">
+					<tr>
+						<th scope="row">
+							<i class="fas fa-times-circle text-danger"></i>
+						</th>
+						<td>
+							We were unable to reconfigure the `config/routes.cfm` file.
+						</td>
+					</tr>
+					<cfset continueChecks = false >
+				</cfcatch>
+			</cftry>
+		</cfif>
+
+	</tbody>
+</table>
 
 	<!--- All is good so reconfigure the main route --->
 	<cfif continueChecks >
-		<!--- Change the default route to load the app --->
-		<cfscript>
-			fileContent = fileRead(expandPath("config/routes.cfm"), "utf-8");
-			newContent = replace(fileContent, '"install', '"main');
-			fileObject = fileOpen("config/routes.cfm", "write", "utf-8");
-			fileWrite(fileObject, newContent , "utf-8");
-			fileClose(fileObject);
-		</cfscript>
 
 		<h2>Congradulations</h2>
 		<p>
-			All installation verification steps have completed and your installation has been reconfigured to load the applicaiton root.
-			This means that `install##index` has been changed to `main##index` in the `config/routes.cfm` file.
 			Click the reload button below to reload the framework and launch your application. You may safely remove the `install` folder
 			from the `views` folder before moving into production.
 		</p>
