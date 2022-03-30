@@ -1,7 +1,7 @@
 {
     "name":"CFWheels Template Example App",
     "version":"1.0.0",
-    "author":"Tom King",
+    "author":"Tom King, Peter Amiri",
     "shortDescription":"A CFWheels 2.x example app with user management, role based permissions and password resets",
     "location":"ForgeboxStorage",
     "slug":"cfwheels-template-example-app",
@@ -31,24 +31,21 @@
         }
     ],
     "dependencies":{
-        "cfwheels-base":"^2.2",
-        "cfwheels-core":"^2.2",
+        "cfwheels-core":"^2.2.0",
         "cfwheels-flashmessages-bootstrap":"^1.0.2",
         "cfwheels-authenticateThis":"^1.0.1",
         "cfwheels-js-confirm":"^1.0.5"
     },
     "installPaths":{
-        "cfwheels-base":"base/",
         "cfwheels-core":"wheels/",
-        "cfwheels-flashmessages-bootstrap":"base/plugins/FlashMessagesBootstrap",
-        "cfwheels-authenticateThis":"base/plugins/authenticateThis",
-        "cfwheels-js-confirm":"base/plugins/jsconfirm"
+        "cfwheels-flashmessages-bootstrap":"plugins/FlashMessagesBootstrap",
+        "cfwheels-authenticateThis":"plugins/authenticateThis",
+        "cfwheels-js-confirm":"plugins/jsconfirm"
     },
     "scripts":{
         "postPublish":"!git push --follow-tags",
         "patch-release":"bump --patch && publish",
         "minor-release":"bump --minor && publish",
-        "major-release":"bump --major && publish",
-        "postInstallAll":"rm base/box.json --force && cp config/ base/config/ --recurse && cp controllers/ base/controllers/ --recurse && cp events/ base/events/ --recurse && cp global/ base/global/ --recurse && cp javascript/ base/javascript/ --recurse && cp migrator/ base/migrator/ --recurse && cp models/ base/models/ --recurse && cp plugins/ base/plugins/ --recurse && cp stylesheets/ base/stylesheets/ --recurse && cp tests/ base/tests/ --recurse && cp views/ base/views/ --recurse && cp base/ ./ --recurse && rm base/ --recurse --force && tokenreplace path=box.json token=base/plugins/ replacement=plugins/"
+        "major-release":"bump --major && publish"
     }
 }
