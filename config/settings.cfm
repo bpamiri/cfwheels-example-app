@@ -70,5 +70,8 @@
 	// Password Fields
 	set(functionName="passwordField,passwordFieldTag", autocomplete="off");
 
+	//Automatically run all migrations on Application Startup
+	set(autoMigrateDatabase=true);
+
 // CLI-Appends-Here
 </cfscript>
