@@ -7,7 +7,27 @@ applications; it aims to demonstrate some of the framework's features such as Da
 
 ## Installation
 
-See [Installation](https://github.com/cfwheels/cfwheels-example-app/wiki/Installation)
+The installation process has been greatly simplyfied and now uses Commandbox, the Commandbox CFWheels-CLI module, and Forgbox.io
+
+Lets get started. At the Commandbox prompt type:
+```
+wheels g app name=example datasourceName=exampleh2 template=cfwheels-template-example-app --setupH2
+```
+
+This will install a copy of the Example App template into a directory for us. Name the application and datasource and setup the H2 datasource for our use.
+
+Then issue:
+```
+install
+```
+This will install all the dependencies the application requires. These include not only runtime dependencies but also development dependencies needed to wire up the datasource.
+
+Finally start the server:
+```
+server start
+```
+
+If all goes well you should see the installation verification page in the browser that opens up.
 
 ## Documentation
 
@@ -15,6 +35,7 @@ See the [Wiki](https://github.com/cfwheels/cfwheels-example-app/wiki/Installatio
 
 ## Requirements
 
- - Commandbox (to run locally)
- - Tested on Lucee 5.2.7 / ACF 2016
- - MySQL 5.x
+ - Commandbox
+ - Commandbox CFWheels-CLI module
+ - Tested on Lucee 5.x / ACF 2018
+ - MySQL 5.x, H2
