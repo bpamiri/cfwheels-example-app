@@ -1,6 +1,6 @@
 {
     "name":"CFWheels Template Example App",
-    "version":"1.0.4",
+    "version":"1.0.5",
     "author":"Tom King, Peter Amiri",
     "shortDescription":"A CFWheels 2.x example app with user management, role based permissions and password resets",
     "location":"ForgeboxStorage",
@@ -46,6 +46,7 @@
         "postPublish":"!git push --follow-tags",
         "patch-release":"bump --patch && publish",
         "minor-release":"bump --minor && publish",
-        "major-release":"bump --major && publish"
+        "major-release":"bump --major && publish",
+        "postInstallAll":""
     }
 }
