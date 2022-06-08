@@ -31,13 +31,13 @@
         }
     ],
     "dependencies":{
-        "cfwheels-core":"^2.2.0",
+        "cfwheels":"^2.3.0",
         "cfwheels-flashmessages-bootstrap":"^1.0.2",
         "cfwheels-authenticateThis":"^1.0.1",
         "cfwheels-js-confirm":"^1.0.5"
     },
     "installPaths":{
-        "cfwheels-core":"wheels/",
+        "cfwheels":"wheels/",
         "cfwheels-flashmessages-bootstrap":"plugins/FlashMessagesBootstrap",
         "cfwheels-authenticateThis":"plugins/authenticateThis",
         "cfwheels-js-confirm":"plugins/jsconfirm"
