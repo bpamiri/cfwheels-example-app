@@ -175,6 +175,16 @@
 			from the `views` folder before moving into production.
 		</p>
 
+		<p>To log into the sample app interface, some default user accounts should be available:<br>
+			admin@domain.com<br>
+			editor@domain.com<br>
+			user@domain.com<br>
+			user2@domain.com<br>
+			user3@domain.com (Pending Verification)<br>
+			All of them have the password set to Password123!<br>
+			<br>
+		Copy this information for future reference.</p>
+
 		#linkTo(text="Reload", route="root", params="reload=yes&password=#get('reloadPassword')#", class="btn btn-primary")#
 	</cfif>
 
